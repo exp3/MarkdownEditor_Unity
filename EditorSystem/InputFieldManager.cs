@@ -9,10 +9,10 @@ public class InputFieldManager : MonoBehaviour
     // inputオブジェクト
     [SerializeField] private GameObject inputObject;
     private TMP_InputField inputField;
-    
+
     // outputオブジェクト
-    [SerializeField] private GameObject previewObject;
-    private TMPro.TMP_Text text;
+    [SerializeField] private GameObject outputObject;
+    private OutputFieldManager outputFieldManager;
 
     // Start is called before the first frame update
     void Start()
@@ -24,7 +24,7 @@ public class InputFieldManager : MonoBehaviour
         inputField.onValueChanged.AddListener(UpdateText);
 
         // 出力先の設定
-        text = previewObject.GetComponent<TMP_Text>();
+        outputFieldManager = outputObject. GetComponent<OutputFieldManager>();
     }
 
     // Update is called once per frame
@@ -36,6 +36,6 @@ public class InputFieldManager : MonoBehaviour
     public void UpdateText(string inputText)
     {
         Debug.Log(inputText);
-        text.SetText(inputText);
+        outputFieldManager.SetPreview(inputText);
     }
 }
