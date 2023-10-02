@@ -1,18 +1,16 @@
+/// preview側の空オブジェクトにアタッチするクラス
+/// 文字列の変換のみを行うためMonoBehaviourは継承しない。
+
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
+using Markdig;
 
-public class MDtoTMPConverter : MonoBehaviour
+public class MDtoTMPConverter
 {
-    // Start is called before the first frame update
-    void Start()
+    private Markdig.MarkdownPipeline markdownPipeline = new MarkdownPipelineBuilder().UsePipeTables().Build();
+    public string Convert(string text)
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        text = Markdown.ToHtml(text);
+        return text;
     }
 }
