@@ -21,14 +21,13 @@ public class OutputFieldManager : MonoBehaviour
 
     public void SetPreview(string inputText)
     {
-        string previewText = "";
-
+        string previewText = MDtoTMPConverter.Convert(inputText);
         ChangePreview(previewText);
     }
 
     public void ChangePreview(string previewText)
     {
-        Debug.Log("changePreview");
+        Debug.Log("changePreview: " + previewText);
         this.text.SetText(previewText);
     }
 }
